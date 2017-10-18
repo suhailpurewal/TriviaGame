@@ -1,0 +1,12 @@
+body {
+	background: url(../images/jazzbg.jpg) no-repeat center center fixed;
+}
+.container {
+	background-color: pink;
+}
+.hidden {
+	visibility: hidden;
+}
+/*#qone, #qtwo, #qthree, #qfour, #qfive, #qsix, #qseven, #qeight {
+	visibility: hidden;
+}*/
