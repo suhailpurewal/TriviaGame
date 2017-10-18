@@ -1,9 +1,12 @@
+title {
+	font-family: comic-sans;
+}
 body {
 	background: url(../images/jazzbg.jpg) no-repeat center center fixed;
 }
 .container {
-	background-color: pink;
-}
+	background-color: rgba(212,175,55, 0.5);
+	} 
 .hidden {
 	visibility: hidden;
 }

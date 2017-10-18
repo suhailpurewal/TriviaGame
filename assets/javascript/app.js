@@ -4,47 +4,58 @@ $('document').ready(function(){
 
 // global variables
 var questionArray = [
-	"This is question 1?",
-	"this is question 2",
-	"this is question 3",
-	"this is question 4",
-	"this is question 5",
-	"this is question 6",
+	"Who is NOT an original member of the Wu-Tang Clan?",
+	"The majority of Wu-Tang members are from which New York City Borough?",
+	"Who is the first Wu-Tang member to release a solo effort?",
+	"'Ghostface, catch the blast of a hype verse. My glock bursts, leave in a hearse, I did worse I come rough, tough like an elephant tusk Ya head rush, fly like Egyptian musk' are lyrics to which '36 Chambers' song?",
+	"Out of the group, which two members can often be found collaborating witheach other throughout the years?",
+	"'Raw I'ma give it to ya, wit' no trvia. Raw like cocaine straight from Bolivia. My hip-hop will rock and shock the nation. Like the Emancipation Proclamation' are lyrics rapped by which member?",
 ];
 var answerArray = [[
-	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+	"Ghostface Killah",
+	"RZA",
+	"Method Man",
+	"Cappadonna",
 ],
-[	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+[	"Queens",
+	"Staten Island",
+	"Brooklyn",
+	"Bronx",
 ],
-[	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+[	"Ghostface Killah",
+	"GZA",
+	"Raekwon",
+	"Method Man",
 ],
-[	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+[	"Shame on a Nuh",
+	"Da Mystery of Chessboxin'",
+	"Bring Da Ruckus",
+	"Protect Ya Neck",
 ],
-[	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+[	"Ghostface Killah and Raekwon",
+	"RZA and GZA",
+	"Method Man and Redman",
+	"ODB and U-God",
 ],
-[	"first choice",
-	"second choice",
-	"third choice",
-	"fourth choice",
+[	"Method Man",
+	"GZA",
+	"Inspectah Deck",
+	"U-God",
 ],
 ];
 var correctAnswer = [
-"A. first choice"
+
+"D. Cappadonna",
+
+"B. Staten Island",
+
+"A. Ghostface Killah",
+
+"C. Bring Da Ruckus",
+
+"A. Ghostface Killah and Raekwon",
+
+"D. U-God",
 ];
 
 var rightCount = 0;
@@ -60,7 +71,7 @@ var startSound = new Audio("assets/sound/wwtbam.mp3");
 
 // functions -----------------------------------
 function updateHTML(){
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>15</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. "+answerArray[questionCounter][1]+"</p><p class='answer'>C. "+answerArray[questionCounter][2]+"</p><p class='answer'>D. "+answerArray[questionCounter][3]+"</p>";
+	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>15</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. "+answerArray[questionCounter][1]+"</p><p class='answer'>C. "+answerArray[questionCounter][2]+"</p><p class='answer'>D. "+answerArray[questionCounter][3]+"</p>";
 	$(".staging").html(gameHTML);
 };
 function resetGame() {
@@ -82,26 +93,26 @@ function timer() {
 		if (counter > 0) {
 			counter--;
 		}
-		$("#timeLeft").html(counter);
+		$(".timer").html(counter);
 	}
 };
 function win() {
-	correctAnswer++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswer[questionCounter] + "</p>" + imageArray[questionCounter];
+	rightCount++;
+	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswer[questionCounter] + "</p>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 3000); 
+	setTimeout(wait, 4000); 
 }
 function timeLoss () {
 	skippedCount++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='img/x.png'>";
+	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/financial.gif'>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 3000); 
+	setTimeout(wait, 4000); 
 }
 function loss () {
 	wrongCount++;
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='img/x.png'>";
+	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/shaolin.gif'>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 3000);
+	setTimeout(wait, 4000);
 }
 function wait() {
 	if (questionCounter < 7) {
@@ -115,7 +126,7 @@ function wait() {
 	}
 
 function endScreen() {
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + rightCount + "</p>" + "<p>Wrong Answers: " + wrongCount + "</p>" + "<p>Unanswered: " + skippedCount + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + rightCount + "</p>" + "<p>Wrong Answers: " + wrongCount + "</p>" + "<p>Unanswered: " + skippedCount + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
 	$(".staging").html(gameHTML);
 }
 
@@ -148,13 +159,6 @@ $("body").on("click", ".answer", function(event) {
 });
 
 
-
-
-
-
-
-
-
-
-
 });
+
+// game not udpating after last question
