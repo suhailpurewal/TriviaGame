@@ -71,15 +71,15 @@ var startSound = new Audio("assets/sound/wwtbam.mp3");
 
 // functions -----------------------------------
 function updateHTML(){
-	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>15</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. "+answerArray[questionCounter][1]+"</p><p class='answer'>C. "+answerArray[questionCounter][2]+"</p><p class='answer'>D. "+answerArray[questionCounter][3]+"</p>";
+	gameHTML = "<p class='text-center timeLeft'p>Time Remaining: <span class='timer'>15</span></p><p class='text-center question'>" + questionArray[questionCounter] + "</p><p class='answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. "+answerArray[questionCounter][1]+"</p><p class='answer'>C. "+answerArray[questionCounter][2]+"</p><p class='answer'>D. "+answerArray[questionCounter][3]+"</p>";
 	$(".staging").html(gameHTML);
 };
 function resetGame() {
-	var rightCount = 0;
-	var wrongCount = 0;
-	var skippedCount = 0;
-	var questionCounter = 0;
-	var counter = 15;
+	rightCount = 0;
+	wrongCount = 0;
+	skippedCount = 0;
+	questionCounter = 0;
+	counter = 15;
 	updateHTML();
 	timer();
 }
@@ -98,19 +98,19 @@ function timer() {
 };
 function win() {
 	rightCount++;
-	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswer[questionCounter] + "</p>";
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/financial.gif'>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 4000); 
+	setTimeout(wait, 3000); 
 }
 function timeLoss () {
 	skippedCount++;
-	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/financial.gif'>";
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>";
 	$(".staging").html(gameHTML);
 	setTimeout(wait, 4000); 
 }
 function loss () {
 	wrongCount++;
-	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/shaolin.gif'>";
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/shaolin.gif'>";
 	$(".staging").html(gameHTML);
 	setTimeout(wait, 4000);
 }
@@ -126,7 +126,7 @@ function wait() {
 	}
 
 function endScreen() {
-	gameHTML = "<p class='text-center timeLeft-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + rightCount + "</p>" + "<p>Wrong Answers: " + wrongCount + "</p>" + "<p>Unanswered: " + skippedCount + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center recap'>All done, here's how you did!" + "</p>" + "<p class='summary'>Correct Answers: " + rightCount + "</p>" + "<p class='summary'>Wrong Answers: " + wrongCount + "</p>" + "<p class='summary'>Unanswered: " + skippedCount + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
 	$(".staging").html(gameHTML);
 }
 

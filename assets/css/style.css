@@ -13,3 +13,19 @@ body {
 /*#qone, #qtwo, #qthree, #qfour, #qfive, #qsix, #qseven, #qeight {
 	visibility: hidden;
 }*/
+.question {
+	font-size: 35px;
+	font-weight: bold;
+}
+.answer {
+	font-size: 28px;
+}
+.timer {
+	font-size: 30px;
+}
+.timeLeft {
+	font-size: 30px;
+}
+.recap, .summary {
+	font-size: 28px;
+}
