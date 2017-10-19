@@ -1,6 +1,6 @@
-// doc ready & console.log test
-$('document').ready(function(){
-	console.log("you're good to go!");
+// // doc ready & console.log test
+// $('document').ready(function(){
+// 	console.log("you're good to go!");
 
 // global variables
 var questionArray = [
@@ -115,7 +115,7 @@ function loss () {
 	setTimeout(wait, 4000);
 }
 function wait() {
-	if (questionCounter < 7) {
+	if (questionCounter < 5) {
 		questionCounter++
 		updateHTML();
 		counter = 15;
@@ -157,8 +157,12 @@ $("body").on("click", ".answer", function(event) {
 		loss();
 	}
 });
-
+$("body").on("click", ".reset-button", function(event) {
+	resetGame();
 
 });
+
+
+// });
 
 // game not udpating after last question
