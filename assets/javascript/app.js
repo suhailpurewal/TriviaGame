@@ -104,7 +104,7 @@ function win() {
 }
 function timeLoss () {
 	skippedCount++;
-	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>";
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/cream.gif'>";
 	$(".staging").html(gameHTML);
 	setTimeout(wait, 4000); 
 }
