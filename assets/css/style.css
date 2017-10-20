@@ -29,3 +29,7 @@ body {
 .recap, .summary {
 	font-size: 28px;
 }
+.img-end {
+	height: 25%;
+	width: 25%;
+}

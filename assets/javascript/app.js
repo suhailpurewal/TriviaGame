@@ -68,6 +68,7 @@ var timeRemaining;
 var selectedAnswer;
 var questionNumber;
 var startSound = new Audio("assets/sound/wwtbam.mp3");
+var endSound = new Audio("assets/sound/cream.mp3")
 
 // functions -----------------------------------
 function updateHTML(){
@@ -106,13 +107,13 @@ function timeLoss () {
 	skippedCount++;
 	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/cream.gif'>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 4000); 
+	setTimeout(wait, 5000); 
 }
 function loss () {
 	wrongCount++;
 	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/shaolin.gif'>";
 	$(".staging").html(gameHTML);
-	setTimeout(wait, 4000);
+	setTimeout(wait, 5000);
 }
 function wait() {
 	if (questionCounter < 5) {
@@ -126,7 +127,9 @@ function wait() {
 	}
 
 function endScreen() {
-	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center recap'>All done, here's how you did!" + "</p>" + "<p class='summary'>Correct Answers: " + rightCount + "</p>" + "<p class='summary'>Wrong Answers: " + wrongCount + "</p>" + "<p class='summary'>Unanswered: " + skippedCount + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	startSound.pause();
+	endSound.play();
+	gameHTML = "<p class='text-center timeLeft'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center recap'>Here are your results!" + "</p>" + "<p class='summary'>Correct Answers: " + rightCount + "</p>" + "<p class='summary'>Wrong Answers: " + wrongCount + "</p>" + "<p class='summary'>Unanswered: " + skippedCount + "</p>" + "<img class='center-block img-end' src='assets/images/cream.jpg'>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
 	$(".staging").html(gameHTML);
 }
 
